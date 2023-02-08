@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: tsharafiyev
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/tsharafiyev-harbor-project/app:971c881-47b83c0
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/tsharafiyev-harbor-project/db@sha256:ba9e6d79ff4e98d09e3fcf9a7a014d11ab51d196ec826bc111afa3763f27e7ec
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
