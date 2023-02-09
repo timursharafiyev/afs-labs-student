@@ -6,6 +6,7 @@ import api
 import functions
 import os
 
+# change for testing pipeline
 app = Flask(__name__)
 
 # Required to use Flask sessions, Debug toolbar
